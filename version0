@@ -1,0 +1,264 @@
+/*
+ * Un poema de amor
+ */
+
+/*
+   pre-programación del ... amor,
+   personaje a y b
+   un desastre inclusivo
+
+   se conocen en ir a un evento, lista de eventos: trabajo,
+   fiesta, cena, casa de amigos, cita a ciegas, app de citas, evento cultural,
+   matrimonio arreglado,
+
+   si uno mete los cuernos, opcion: siguen {perdon, aceptación {...,...,...} }, cortan///
+
+   duración = edad a || b
+            = corte - fecha de inicio
+            muerte - fecha de inicio
+
+    corte = fecha inicio     //no
+    edad = años desde nacimiento
+          ej abril 1980
+
+    fecha de inicio, relación
+
+
+    capitulos:
+      conocimiento
+      cortejo
+      fijacion de la relación
+        pareja estable
+        vivir juntos
+        casarse
+      hijos
+      trabajo
+      economía
+
+
+
+ *      *escapes (evitar el loop infinito)
+
+    historia simple.
+                se conocen/muerte
+                salen, cortan/muerte
+                pareja estable, cortan/muerte
+                viven juntos, cortan/muerte
+                matrimonio (final feliz), cortan/muerte
+
+
+
+   notas para el programador: poco eficiente,
+
+   está socialmente preProgramado
+
+*/
+
+/*
+   jose cadalso el libro de las preguntas, obradoibo (taller), canteros, juego de la oca
+*/
+
+/*
+   16feb19 notas
+   a y b no tienen género defonido más allá de que lo pensemos como de diferentes sexos
+   tener cuidado de no caer en la asignación de un género, comportamientos genérico
+   -incrementador de citas: cuantificar cada categoría y sumar y promediar para saber si sigue o no
+   categorias: conversación, sexo, salidas a lugares interesantes, atractivo de a y b, que busca cada uno
+
+  ir generarndo cada parte, como cada cita con su porcentaje
+
+  consentir variables que no se apliquen
+*/
+
+int a, b;
+int aEventoSocial;
+int bEventoSocial;
+int aEvento;
+int bEvento;
+
+boolean conocimiento = false;
+
+int eventoSocial;
+String evento;
+
+String lugarEnvento;
+
+int cita;
+
+int sustanciaEmbriagadoras;
+
+boolean diversion = true;
+boolean amigosMutuos = true;
+int desinhibicion;
+
+int conversacion, temas, interes, tono, adecuado, puntos;
+int ideaDeasobreAtractivoFisicoDeb, incremento, atractivo, humor, risa;
+
+int promedio;
+
+int azar;
+
+boolean fin = false;
+boolean desastre = true;
+
+void setup() {
+  //hay algo predefinido al principio?
+  //arriba es la intro y esto sería como la base, el contexto, valores iniciales, declaraciones de entradas y salidas
+}
+
+void loop() {
+  //cómo empieza esto ?
+
+  //encuentro en a y b
+  if (aEvento == bEvento == "trabajo") {
+    lugarEnvento = "afterOffice" || "café" || "cita";
+
+    conocimiento = true;
+
+    if (incrementadorDeCitas() > 75) {
+      //siguientePaso
+
+      //feromononas, olor
+      //algo mas caprichoso
+    }
+
+  } else {
+    fin = true;
+    desastre = true;
+    exit;
+  }
+
+
+
+  switch (aEventoSocial) {
+    case 1:
+      aEvento = "trabajo";
+      lugarEnvento = "afterOffice" || "café" || "cita";
+      break;
+    case 2:
+      aEvento = "fiesta";
+      if (sustanciaEmbriagadoras > 80) {
+        desinhibicion += 4;
+      } else if (sustanciaEmbriagadoras > 40) {
+        desinhibicion += (random(2));
+
+      }
+
+      diversion = true;
+      amigosMutuos = true;
+
+      break;
+    case 3:
+      aEvento = "boliche";
+      break;
+    case 4:
+      aEvento = "app de citas";
+      break;
+    case 5:
+      aEvento = "evento cultural";
+      break;
+    case 6:
+      aEvento = "cita a ciegas";
+      break;
+    case 7:
+      aEvento = "comida con amigos";
+      break;
+    case 8:
+      aEvento = "comida familiar";
+      break;
+    case 9:
+      aEvento = "calle";
+      break;
+    case 10:
+      aEvento = "boda";
+      break;
+    case 11:
+      aEvento = "funeral";
+      break;
+    case 12:
+      aEvento = "matrimonio arreglado"; //5 bodas y un funeral
+      break;
+    default:
+      aEvento = " ... ";
+      aEvento = "matrimonio arreglado";
+      desastre = true;
+      break;
+  }
+
+  if (aEvento == bEvento) {
+    conocimiento = true;
+  } else {
+    fin = true;
+    desastre = true;
+    exit;
+  }
+
+  if (conocimiento == true) {
+    cita = 1; //cuándo habría más citas?? hay varias citas? después que pasa?
+
+    cita++; //incrementador de citas
+
+  } else {
+    fin = true;
+    desastre = true;
+    exit;
+  }
+
+}
+
+//(si tienen mas de 85 porcentaje suman 3 citas, si es mas de 70 suman 2 citas, si tienen mas de 50 suma 1 cita)
+
+
+// -incrementador de citas: cuantificar cada categoría y sumar y promediar para saber si suman citas o no
+//   categorias: conversación, sexo, salidas a lugares interesantes, atractivo de a y b, que busca cada uno
+
+int incrementadorDeCitas() {
+
+  if (conversacion > 75) {
+    //ponderarlo
+
+    if (temas < interes) {
+      puntos--;
+    }
+
+    if (tono == adecuado) {
+      puntos++;
+    }
+
+    // si a encuentra atractivo a "b" suma puntos
+    //re-pensar cómo se estructura lo del atractivo fisico
+    //if ( a atractivoFisicoA
+
+    for (int atractivo = 0; atractivo <= ideaDeasobreAtractivoFisicoDeb; atractivo++ ) { //si supera cierto umbral
+      if ( ideaDeasobreAtractivoFisicoDeb > incremento) {
+        atractivo++;
+      }
+      puntos++;
+      //es un for que depende de un if//niki
+
+    }
+
+
+    if (humor == risa) {
+      puntos++;
+    } else {
+
+    }
+
+    //tomarse en serio;//??
+
+    azar = random(-15, 15);
+    promedio = (puntos / 4) + azar;
+
+    if (promedio > 75) { //para ambos
+      //siguiente paso
+    } else {
+      fin = true;
+      desastre = true;
+      exit;
+    }
+  }
+
+  return puntos;
+
+}
